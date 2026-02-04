@@ -1,7 +1,18 @@
+@Library("Shared") _
 pipeline {
     agent {label "kiran"}
-
+    
+    triggers {
+        githubPush()
+    }
     stages {
+        stage("Hello"){
+            steps{
+                script{
+                    hello()
+                }
+            }
+        }
         stage('Clone Code') {
             steps {
                 echo "Cloning repository..."
